@@ -43,7 +43,7 @@ async function getUser(req, res) {
     try {
         const { id } = req.params;
        const user = await User.findOne({
-           attributes: ['id', 'username', 'status'],
+           attributes: ['username', 'status'],
            where: {
             id: id,
            }
@@ -80,8 +80,7 @@ async function updateUser (req, res) {
             }
             
         );
-        console.log(user);
-        res.json(user);
+        res.json([user[0]]);
     } catch (error) {
         logger.error(error.message)
         res.status(500).json({

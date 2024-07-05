@@ -63,7 +63,7 @@ async function updateTask(req, res) {
     const { name } = req.body;
 
     try {
-        const task = Task.update(
+        const task = await Task.update(
             { name },
             {
                 where: {
@@ -91,7 +91,7 @@ async function taskDone(req, res) {
     const { done } = req.body;
 
     try {
-        const task = Task.update(
+        const task = await Task.update(
             { done },
             {
                 where: {
